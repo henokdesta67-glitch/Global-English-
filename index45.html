@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global English & Skills | Registration</title>
+
+    <link rel="stylesheet" href="style888.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="brand">
+
+            <img src="logo.jpg" alt="Global English & Skills Logo">
+
+            <div class="brand-copy">
+                <h1>Global English <span>& Skills</span></h1>
+                <p>Learn • Improve • Achieve</p>
+            </div>
+
+        </div>
+
+        <div class="header-slogan">
+            Better English,
+            <strong>Brighter Future!</strong>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="page-wrap">
+
+        <form id="registrationForm" class="registration-card">
+
+            <!-- STUDENT INFORMATION -->
+            <section class="form-section">
+
+                <h2 class="section-heading">
+                    <span>♟</span>
+                    Student Information
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="fullName">Full Name *</label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="phone">Phone Number *</label>
+
+                        <div class="phone-input">
+
+                            <span>+251</span>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="9XXXXXXXX"
+                                pattern="9[0-9]{8}"
+                                title="Enter 9 digits starting with 9"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="email">
+                            Email Address
+                            <span>(Optional)</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="telegram">
+                            Telegram Username *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="telegram"
+                            name="telegram"
+                            placeholder="@yourusername"
+                            pattern="@?[A-Za-z0-9_]{5,32}"
+                            title="Enter your valid Telegram username"
+                            required
+                        >
+
+                        <small>
+                            Enter your Telegram username so we can contact you.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDENT STATUS -->
+            <section class="form-section">
+
+                <h2 class="section-heading">
+                    <span>🎓</span>
+                    Student Status
+                </h2>
+
+                <div class="field">
+
+                    <label for="status">
+                        Your Grade or Status *
+                    </label>
+
+                    <select id="status" name="status" required>
+
+                        <option value="">
+                            Select your grade or status
+                        </option>
+
+                        <optgroup label="School Students">
+
+                            <option value="Grade 1">Grade 1</option>
+                            <option value="Grade 2">Grade 2</option>
+                            <option value="Grade 3">Grade 3</option>
+                            <option value="Grade 4">Grade 4</option>
+                            <option value="Grade 5">Grade 5</option>
+                            <option value="Grade 6">Grade 6</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+
+                        </optgroup>
+
+                        <optgroup label="Other Status">
+
+                            <option value="University Student">
+                                University Student
+                            </option>
+
+                            <option value="College Student">
+                                College Student
+                            </option>
+
+                            <option value="Graduate">
+                                Graduate
+                            </option>
+
+                            <option value="Employed">
+                                Employed
+                            </option>
+
+                            <option value="Unemployed">
+                                Unemployed
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </optgroup>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- COURSE SELECTION -->
+            <section class="form-section">
+
+                <h2 class="section-heading">
+                    <span>▣</span>
+                    Choose Your English Course
+                </h2>
+
+                <p class="section-note">
+                    All course prices are monthly fees.
+                </p>
+
+
+                <div class="course-list">
+
+                    <!-- PRIVATE CLASS -->
+                    <label class="course-option">
+
+                        <input
+                            type="radio"
+                            name="course"
+                            value="Private Class"
+                            data-price="7500"
+                            required
+                        >
+
+                        <span class="course-symbol private-symbol">
+                            1:1
+                        </span>
+
+                        <span class="course-description">
+
+                            <strong>Private Class</strong>
+
+                            <small>
+                                One-to-one English training
+                            </small>
+
+                        </span>
+
+                        <span class="course-price">
+                            7,500 birr
+                            <small>/ month</small>
+                        </span>
+
+                    </label>
+
+
+                    <!-- MINI GROUP CLASS -->
+                    <label class="course-option">
+
+                        <input
+                            type="radio"
+                            name="course"
+                            value="Mini Group Class"
+                            data-price="4000"
+                        >
+
+                        <span class="course-symbol mini-symbol">
+                            👥
+                        </span>
+
+                        <span class="course-description">
+
+                            <strong>Mini Group Class</strong>
+
+                            <small>
+                                Small group (2–5 students)
+                            </small>
+
+                        </span>
+
+                        <span class="course-price">
+                            4,000 birr
+                            <small>/ month</small>
+                        </span>
+
+                    </label>
+
+
+                    <!-- GROUP CLASS -->
+                    <label class="course-option">
+
+                        <input
+                            type="radio"
+                            name="course"
+                            value="Group Class"
+                            data-price="2500"
+                        >
+
+                        <span class="course-symbol group-symbol">
+                            👥
+                        </span>
+
+                        <span class="course-description">
+
+                            <strong>Group Class</strong>
+
+                            <small>
+                                Larger group (6+ students)
+                            </small>
+
+                        </span>
+
+                        <span class="course-price">
+                            2,500 birr
+                            <small>/ month</small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- PAYMENT INFORMATION -->
+            <section class="form-section">
+
+                <h2 class="payment-title">
+                    Payment Info
+                    <span>(Monthly Fee)</span>
+                </h2>
+
+                <p class="payment-instruction">
+                    Complete payment to one of the accounts below
+                    and upload your payment receipt.
+                </p>
+
+
+                <!-- CBE -->
+                <div class="bank-card">
+
+                    <div class="bank-icon cbe-icon">
+                        🏦
+                    </div>
+
+                    <div class="bank-details">
+
+                        <h3>CBE (Commercial Bank of Ethiopia)</h3>
+
+                        <p>Account Holder: Henok Desta</p>
+
+                        <strong>
+                            Account Number: 1000644137318
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TELEBIRR -->
+                <div class="bank-card">
+
+                    <div class="bank-icon telebirr-icon">
+                        📱
+                    </div>
+
+                    <div class="bank-details">
+
+                        <h3>TeleBirr</h3>
+
+                        <p>Account Holder: Henok Desta</p>
+
+                        <strong>
+                            Account Number: 0930695142
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECEIPT UPLOAD -->
+                <div class="receipt-upload">
+
+                    <div class="upload-icon">
+
+                        <svg
+                            width="42"
+                            height="42"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path d="M12 16V3"></path>
+
+                            <path d="m7 8 5-5 5 5"></path>
+
+                            <path d="M20 16.5v3A1.5 1.5 0 0 1 18.5 21h-13A1.5 1.5 0 0 1 4 19.5v-3"></path>
+
+                        </svg>
+
+                    </div>
+
+                    <p class="upload-text">
+                        Choose a file or drag and drop
+                    </p>
+
+                    <small>Image (8MB)</small>
+
+                    <label for="receipt" class="choose-file-btn">
+                        Choose File
+                    </label>
+
+                    <input
+                        type="file"
+                        id="receipt"
+                        name="receipt"
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                    >
+
+                    <p id="fileName" class="file-name">
+                        No file selected
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ADDITIONAL MESSAGE -->
+            <div class="field message-field">
+
+                <label for="message">
+                    Additional Message
+                    <span>(Optional)</span>
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    placeholder="Write any questions or additional information..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- FORM RESPONSE -->
+            <div
+                id="formMessage"
+                class="form-message"
+                role="status"
+            ></div>
+
+
+            <!-- SUBMIT BUTTON -->
+            <button
+                type="submit"
+                class="submit-button"
+            >
+
+                Register Now
+                <span>✓</span>
+
+            </button>
+
+            <p class="privacy-note">
+                Please check your information before submitting.
+            </p>
+
+        </form>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <span>
+            Global English & Skills —
+            Your Partner in English Learning
+        </span>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script8.js"></script>
+
+</body>
+
+</html>

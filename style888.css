@@ -1,0 +1,823 @@
+
+/* ==============================
+   1. GENERAL SETTINGS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #0755bd;
+    --dark-blue: #062d78;
+    --light-blue: #eaf3ff;
+    --gold: #f5c928;
+    --text: #10275d;
+    --muted: #657491;
+    --border: #c9d9f2;
+}
+
+body {
+    background: #f3f7ff;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==============================
+   2. HEADER
+============================== */
+
+.site-header {
+    min-height: 170px;
+    padding: 22px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    color: white;
+
+    background: linear-gradient(
+        112deg,
+        #0878e7,
+        #063b9e 72%,
+        #062d78
+    );
+
+    border-bottom: 7px solid var(--gold);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.brand img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: contain;
+
+    background: white;
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
+.brand-copy h1 {
+    font-size: clamp(22px, 4vw, 38px);
+    line-height: 1.2;
+}
+
+.brand-copy h1 span {
+    color: var(--gold);
+}
+
+.brand-copy p {
+    margin-top: 10px;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.header-slogan {
+    text-align: right;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.header-slogan strong {
+    display: block;
+    color: var(--gold);
+}
+
+
+/* ==============================
+   3. MAIN CONTAINER
+============================== */
+
+.page-wrap {
+    width: min(960px, 94%);
+    margin: 25px auto 30px;
+}
+
+.registration-card {
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #e0eaff;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 28px #183c7810;
+}
+
+
+/* ==============================
+   4. SECTION HEADINGS
+============================== */
+
+.form-section {
+    margin-bottom: 28px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.section-heading::after {
+    content: "";
+
+    height: 2px;
+    background: #1c78e9;
+
+    flex: 1;
+}
+
+.section-heading span {
+    min-width: 42px;
+    height: 38px;
+
+    padding: 0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    background: linear-gradient(
+        100deg,
+        #06439e,
+        #0875e1
+    );
+
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+
+/* ==============================
+   5. FORM GRID
+============================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    min-width: 0;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.field label b {
+    color: #e04444;
+}
+
+.field label span {
+    color: var(--muted);
+    font-weight: normal;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 48px;
+
+    padding: 12px 14px;
+
+    color: var(--text);
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1878e5;
+    box-shadow: 0 0 0 3px #1878e51a;
+}
+
+.field small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ==============================
+   6. PHONE INPUT
+============================== */
+
+.phone-input {
+    display: flex;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    overflow: hidden;
+}
+
+.phone-input span {
+    display: flex;
+    align-items: center;
+
+    padding: 0 13px;
+
+    background: #edf3fb;
+    font-size: 14px;
+}
+
+.phone-input input {
+    border: 0;
+    border-radius: 0;
+}
+
+.phone-input:focus-within {
+    border-color: #1878e5;
+    box-shadow: 0 0 0 3px #1878e51a;
+}
+
+.phone-input input:focus {
+    box-shadow: none;
+}
+
+
+/* ==============================
+   7. COURSE SECTION
+============================== */
+
+.section-note {
+    margin: -8px 0 13px;
+
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.course-list {
+    display: grid;
+    gap: 12px;
+}
+
+.course-option {
+    display: grid;
+
+    grid-template-columns: 22px 54px minmax(0, 1fr) auto;
+
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.course-option:hover {
+    border-color: var(--blue);
+    background: #f8fbff;
+}
+
+.course-option:has(input:checked) {
+    border: 2px solid #1673dc;
+    background: #f2f8ff;
+
+    padding: 11px 13px;
+}
+
+.course-option input {
+    width: 18px;
+    min-height: 18px;
+
+    accent-color: var(--blue);
+}
+
+.course-symbol {
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.private-symbol {
+    background: #dceeff;
+    color: #0865d0;
+}
+
+.mini-symbol {
+    background: #ddf8e8;
+}
+
+.group-symbol {
+    background: #eee2ff;
+}
+
+.course-description {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.course-description strong {
+    font-size: 16px;
+}
+
+.course-description small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.course-price {
+    padding: 9px 12px;
+
+    text-align: center;
+    white-space: nowrap;
+
+    color: #06429f;
+    background: #e1efff;
+
+    border-radius: 10px;
+
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.course-price small {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+}
+
+
+/* ==============================
+   8. PAYMENT TITLE
+============================== */
+
+.payment-title {
+    color: #172033;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.payment-title span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #64748b;
+}
+
+.payment-instruction {
+    font-size: 13px;
+    color: #8792a5;
+
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+
+/* ==============================
+   9. BANK PAYMENT CARDS
+============================== */
+
+.bank-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 16px;
+    margin-bottom: 12px;
+
+    background: #fff;
+
+    border: 1px solid #e0e5ed;
+    border-radius: 12px;
+
+    min-height: 88px;
+}
+
+.bank-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    font-size: 21px;
+}
+
+.cbe-icon {
+    background: #fff0df;
+}
+
+.telebirr-icon {
+    background: #e6f3ff;
+}
+
+.bank-details {
+    min-width: 0;
+}
+
+.bank-details h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #27364c;
+}
+
+.bank-details p {
+    font-size: 12px;
+    color: #8490a1;
+    margin-bottom: 3px;
+}
+
+.bank-details strong {
+    font-size: 12px;
+    color: #0875b9;
+    overflow-wrap: anywhere;
+}
+
+
+/* ==============================
+   10. RECEIPT UPLOAD
+============================== */
+
+.receipt-upload {
+    width: 100%;
+    min-height: 190px;
+
+    margin-top: 18px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+
+    border: 2px dashed #d7dce5;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.upload-icon {
+    color: #78879a;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    color: #465166;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.receipt-upload small {
+    color: #8993a3;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.choose-file-btn {
+    display: inline-block;
+
+    padding: 10px 22px;
+
+    color: white;
+    background: #087bd3;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.choose-file-btn:hover {
+    background: #0566b5;
+}
+
+.receipt-upload input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    color: #758196;
+    font-size: 11px;
+    margin-top: 9px;
+}
+
+
+/* ==============================
+   11. ADDITIONAL MESSAGE
+============================== */
+
+.message-field {
+    margin-bottom: 20px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==============================
+   12. SUBMIT BUTTON
+============================== */
+
+.submit-button {
+    width: 100%;
+    min-height: 58px;
+
+    border: 0;
+    border-radius: 11px;
+
+    color: white;
+
+    background: linear-gradient(
+        100deg,
+        #0879e7,
+        #0642a9
+    );
+
+    font-size: 19px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 13px #0755bd2b;
+}
+
+.submit-button:hover {
+    filter: brightness(1.08);
+}
+
+.submit-button span {
+    margin-left: 8px;
+    color: var(--gold);
+}
+
+.privacy-note {
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ==============================
+   13. FORM MESSAGE
+============================== */
+
+.form-message {
+    display: none;
+
+    margin-bottom: 15px;
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.error {
+    color: #9b1c1c;
+    background: #fff0f0;
+}
+
+.form-message.success {
+    color: #17633a;
+    background: #eaf8ef;
+}
+
+
+/* ==============================
+   14. FOOTER
+============================== */
+
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 20px 5%;
+
+    color: #06429f;
+    text-align: center;
+
+    font-size: 13px;
+    font-style: italic;
+
+    background: #e8f1ff;
+}
+
+.footer-logo {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* ==============================
+   15. MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 650px) {
+
+    /* HEADER */
+
+    .site-header {
+        min-height: 120px;
+        padding: 15px 4%;
+        gap: 10px;
+    }
+
+    .brand {
+        gap: 11px;
+    }
+
+    .brand img {
+        width: 76px;
+        height: 76px;
+        border-width: 2px;
+    }
+
+    .brand-copy h1 {
+        font-size: 20px;
+    }
+
+    .brand-copy p {
+        margin-top: 6px;
+        font-size: 11px;
+        letter-spacing: 0;
+    }
+
+    .header-slogan {
+        font-size: 12px;
+    }
+
+
+    /* MAIN */
+
+    .page-wrap {
+        width: 94%;
+        margin: 15px auto 20px;
+    }
+
+    .registration-card {
+        padding: 18px 14px;
+        border-radius: 15px;
+    }
+
+
+    /* FORM */
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .section-heading {
+        font-size: 15px;
+        gap: 8px;
+    }
+
+    .section-heading span {
+        min-width: 35px;
+        height: 34px;
+        padding: 0 10px;
+    }
+
+
+    /* COURSES */
+
+    .course-option {
+        grid-template-columns: 18px 42px minmax(0, 1fr);
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .course-option:has(input:checked) {
+        padding: 9px;
+    }
+
+    .course-symbol {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .course-description strong {
+        font-size: 13px;
+    }
+
+    .course-description small {
+        font-size: 10px;
+    }
+
+    .course-price {
+        grid-column: 3;
+        justify-self: start;
+
+        padding: 6px 9px;
+        font-size: 12px;
+    }
+
+    .course-price small {
+        display: inline;
+        margin-left: 3px;
+    }
+
+
+    /* PAYMENT */
+
+    .payment-title {
+        font-size: 18px;
+    }
+
+    .bank-card {
+        padding: 13px;
+        gap: 12px;
+    }
+
+    .bank-details h3 {
+        font-size: 12px;
+    }
+
+    .bank-details p,
+    .bank-details strong {
+        font-size: 11px;
+    }
+
+    .receipt-upload {
+        min-height: 180px;
+        padding: 15px;
+    }
+
+
+    /* FOOTER */
+
+    .site-footer {
+        font-size: 11px;
+        padding: 15px 4%;
+    }
+
+    .footer-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+}
