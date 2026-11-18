@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Global English & Skills | Registration</title>
+
     <link rel="stylesheet" href="style888.css">
 </head>
 
@@ -12,19 +14,25 @@
 
     <!-- HEADER -->
     <header class="site-header">
+
         <div class="brand">
+
             <img src="logo.jpg" alt="Global English & Skills Logo">
+
             <div class="brand-copy">
                 <h1>Global English <span>& Skills</span></h1>
                 <p>Learn • Improve • Achieve</p>
             </div>
+
         </div>
 
         <div class="header-slogan">
             Better English,
             <strong>Brighter Future!</strong>
         </div>
+
     </header>
+
 
     <!-- MAIN CONTENT -->
     <main class="page-wrap">
@@ -33,14 +41,18 @@
 
             <!-- STUDENT INFORMATION -->
             <section class="form-section">
+
                 <h2 class="section-heading">
                     <span>♟</span>
                     Student Information
                 </h2>
 
                 <div class="form-grid">
+
                     <div class="field">
+
                         <label for="fullName">Full Name *</label>
+
                         <input
                             type="text"
                             id="fullName"
@@ -48,12 +60,18 @@
                             placeholder="Enter your full name"
                             required
                         >
+
                     </div>
 
+
                     <div class="field">
+
                         <label for="phone">Phone Number *</label>
+
                         <div class="phone-input">
+
                             <span>+251</span>
+
                             <input
                                 type="tel"
                                 id="phone"
@@ -63,24 +81,35 @@
                                 title="Enter 9 digits starting with 9"
                                 required
                             >
+
                         </div>
+
                     </div>
 
+
                     <div class="field">
+
                         <label for="email">
                             Email Address
                             <span>(Optional)</span>
                         </label>
+
                         <input
                             type="email"
                             id="email"
                             name="email"
                             placeholder="Enter your email"
                         >
+
                     </div>
 
+
                     <div class="field">
-                        <label for="telegram">Telegram Username *</label>
+
+                        <label for="telegram">
+                            Telegram Username *
+                        </label>
+
                         <input
                             type="text"
                             id="telegram"
@@ -90,11 +119,20 @@
                             title="Enter your valid Telegram username"
                             required
                         >
-                        <small>Enter your Telegram username so we can contact you.</small>
+
+                        <small>
+                            Enter your Telegram username so we can contact you.
+                        </small>
+
                     </div>
 
+
                     <div class="field">
-                        <label for="status">Current Grade / Status *</label>
+
+                        <label for="status">
+                            Current Grade / Status *
+                        </label>
+
                         <select id="status" name="status" required>
                             <option value="" disabled selected>Select your current status</option>
                             <option value="High School (Grade 9-12)">High School (Grade 9–12)</option>
@@ -103,47 +141,66 @@
                             <option value="Graduate / Professional">Graduate / Professional</option>
                             <option value="Other">Other</option>
                         </select>
+
                     </div>
+
                 </div>
+
             </section>
+
 
             <!-- COURSE SELECTION -->
             <section class="form-section">
+
                 <h2 class="section-heading">
                     <span>📚</span>
                     Select Course / Program *
                 </h2>
 
                 <div class="course-options">
+
                     <label class="radio-card">
                         <input type="radio" name="course" value="Spoken English & Communication" required>
                         <span>Spoken English & Communication</span>
                     </label>
+
                     <label class="radio-card">
                         <input type="radio" name="course" value="Academic & Grammar Mastery">
                         <span>Academic & Grammar Mastery</span>
                     </label>
+
                     <label class="radio-card">
                         <input type="radio" name="course" value="IELTS / TOEFL Prep">
                         <span>IELTS / TOEFL Prep</span>
                     </label>
+
                     <label class="radio-card">
                         <input type="radio" name="course" value="Mini Group Class">
                         <span>Mini Group Class</span>
                     </label>
+
                 </div>
+
             </section>
+
 
             <!-- PAYMENT RECEIPT & MESSAGE -->
             <section class="form-section">
+
                 <h2 class="section-heading">
                     <span>🧾</span>
                     Payment Receipt & Notes
                 </h2>
 
                 <div class="form-grid">
+
                     <div class="field">
-                        <label for="receiptFile">Upload Payment Receipt (Optional)</label>
+
+                        <label for="receiptFile">
+                            Upload Payment Receipt
+                            <span>(Optional)</span>
+                        </label>
+
                         <div class="file-upload-wrapper">
                             <input
                                 type="file"
@@ -155,23 +212,36 @@
                                 No file selected
                             </p>
                         </div>
+
                     </div>
 
+
                     <div class="field">
-                        <label for="message">Additional Message <span>(Optional)</span></label>
+
+                        <label for="message">
+                            Additional Message
+                            <span>(Optional)</span>
+                        </label>
+
                         <textarea
                             id="message"
                             name="message"
                             rows="3"
                             placeholder="Any questions or preferred schedule?"
                         ></textarea>
+
                     </div>
+
                 </div>
+
             </section>
 
-            <!-- FEEDBACK & SUBMIT -->
-            <div id="formMessage" class="form-message" style="margin: 15px 0; padding: 12px; border-radius: 6px; font-weight: 600; display: none;"></div>
 
+            <!-- FEEDBACK MESSAGE -->
+            <div id="formMessage" class="form-message"></div>
+
+
+            <!-- SUBMIT BUTTON -->
             <div class="form-actions">
                 <button type="submit" id="submitBtn" class="btn-submit">
                     Register Now
@@ -179,14 +249,16 @@
             </div>
 
         </form>
+
     </main>
 
-    <!-- SUPABASE CLIENT CDN -->
+
+    <!-- SUPABASE & SUBMISSION SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         const SUPABASE_URL = 'https://uuwfbzrezrthnchsohdq.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_U8AWn6wAPtnVBs9REWtkEQ_Ge43u9U2';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         const form = document.getElementById('registrationForm');
         const fileInput = document.getElementById('receiptFile');
@@ -194,7 +266,7 @@
         const submitBtn = document.getElementById('submitBtn');
         const formMessage = document.getElementById('formMessage');
 
-        // 1. Update file label immediately when user selects a file
+        // Fix file chosen label display when user selects a file
         fileInput.addEventListener('change', () => {
             if (fileInput.files && fileInput.files.length > 0) {
                 fileNameDisplay.textContent = '✅ Selected: ' + fileInput.files[0].name;
@@ -207,39 +279,35 @@
             }
         });
 
-        // 2. Handle Form Submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '⏳ Submitting Registration...';
-            formMessage.style.display = 'none';
+            submitBtn.innerHTML = 'Submitting...';
+            formMessage.className = 'form-message';
+            formMessage.textContent = '';
 
             try {
                 let receiptUrl = null;
 
-                // Upload receipt image if one was chosen
                 if (fileInput.files && fileInput.files.length > 0) {
                     const file = fileInput.files[0];
                     const fileExt = file.name.split('.').pop();
                     const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 8)}.${fileExt}`;
 
-                    const { error: uploadError } = await supabaseClient.storage
+                    const { error: uploadError } = await supabase.storage
                         .from('receipts')
                         .upload(fileName, file);
 
-                    if (uploadError) {
-                        console.warn('Receipt upload skipped or failed:', uploadError.message);
-                    } else {
-                        const { data: publicUrlData } = supabaseClient.storage
+                    if (!uploadError) {
+                        const { data: publicUrlData } = supabase.storage
                             .from('receipts')
                             .getPublicUrl(fileName);
                         receiptUrl = publicUrlData.publicUrl;
                     }
                 }
 
-                // Prepare data matching your Supabase columns
                 const formData = {
                     full_name: document.getElementById('fullName').value.trim(),
                     phone: document.getElementById('phone').value.trim(),
@@ -251,8 +319,7 @@
                     additional_message: document.getElementById('message').value.trim() || null
                 };
 
-                // Insert into registrations table
-                const { error: insertError } = await supabaseClient
+                const { error: insertError } = await supabase
                     .from('registrations')
                     .insert([formData]);
 
@@ -260,8 +327,7 @@
                     throw insertError;
                 }
 
-                // Show clear green confirmation message
-                showFeedback('🎉 Registration successful! Your details have been saved.', 'success');
+                showFeedback('🎉 Registration successful! Your data has been saved and a Telegram notification has been sent.', 'success');
                 form.reset();
                 fileNameDisplay.textContent = 'No file selected';
                 fileNameDisplay.style.color = '#758196';
@@ -278,19 +344,11 @@
 
         function showFeedback(message, type) {
             formMessage.textContent = message;
-            formMessage.style.display = 'block';
-            if (type === 'success') {
-                formMessage.style.backgroundColor = '#dcfce7';
-                formMessage.style.color = '#166534';
-                formMessage.style.border = '1px solid #86efac';
-            } else {
-                formMessage.style.backgroundColor = '#fee2e2';
-                formMessage.style.color = '#991b1b';
-                formMessage.style.border = '1px solid #fca5a5';
-            }
+            formMessage.className = 'form-message show ' + type;
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
 
 </body>
+
 </html>
