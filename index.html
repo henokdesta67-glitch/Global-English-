@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -345,10 +344,10 @@
 
                         <h3>CBE (Commercial Bank of Ethiopia)</h3>
 
-                        <p>Account Holder:Global english</p>
+                        <p>Account Holder: Henok Desta</p>
 
                         <strong>
-                            Account Number: xxxxxxxxxx
+                            Account Number: 1000644137318
                         </strong>
 
                     </div>
@@ -367,10 +366,10 @@
 
                         <h3>TeleBirr</h3>
 
-                        <p>Account Holder: Global </p>
+                        <p>Account Holder: Henok Desta</p>
 
                         <strong>
-                            Account Number: xxxxx
+                            Account Number: 0930695142
                         </strong>
 
                     </div>
@@ -487,9 +486,102 @@
 
     </footer>
 
-    <!-- JAVASCRIPT -->
-    <!-- JAVASCRIPT -->
-    <script src="script8.js"></script>
+
+    <!-- SUPABASE CLIENT CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- EMBEDDED JAVASCRIPT LOGIC -->
+    <script>
+      const SUPABASE_URL = 'https://uuwfbzrezrthnchsohdq.supabase.co';
+      const SUPABASE_ANON_KEY = 'sb_publishable_U8AWn6wAPtnVBs9REWtkEQ_Ge43u9U2';
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      const form = document.getElementById('registrationForm');
+      const formMessage = document.getElementById('formMessage');
+      const fileInput = document.getElementById('receipt');
+      const fileNameDisplay = document.getElementById('fileName');
+
+      fileInput.addEventListener('change', (e) => {
+          if (e.target.files.length > 0) {
+              fileNameDisplay.textContent = e.target.files[0].name;
+              fileNameDisplay.style.color = '#17633a';
+          } else {
+              fileNameDisplay.textContent = 'No file selected';
+              fileNameDisplay.style.color = '#758196';
+          }
+      });
+
+      form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const submitBtn = form.querySelector('.submit-button');
+          const originalBtnText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = 'Submitting... ⏳';
+
+          showFeedback('Submitting your registration and triggering notifications...', '');
+
+          try {
+              let receiptUrl = null;
+              const file = fileInput.files[0];
+
+              if (file) {
+                  const fileExt = file.name.split('.').pop();
+                  const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
+
+                  const { error: uploadError } = await supabase.storage
+                      .from('receipts')
+                      .upload(fileName, file);
+
+                  if (uploadError) {
+                      console.warn('Storage upload warning:', uploadError.message);
+                  } else {
+                      const { data: publicUrlData } = supabase.storage
+                          .from('receipts')
+                          .getPublicUrl(fileName);
+                      receiptUrl = publicUrlData.publicUrl;
+                  }
+              }
+
+              const formData = {
+                  full_name: document.getElementById('fullName').value.trim(),
+                  phone: document.getElementById('phone').value.trim(),
+                  email_address: document.getElementById('email').value.trim() || null,
+                  telegram_username: document.getElementById('telegram').value.trim(),
+                  grade_status: document.getElementById('status').value,
+                  course: document.querySelector('input[name="course"]:checked')?.value || null,
+                  receipt_url: receiptUrl,
+                  additional_message: document.getElementById('message').value.trim() || null
+              };
+
+              const { error: insertError } = await supabase
+                  .from('registrations')
+                  .insert([formData]);
+
+              if (insertError) {
+                  throw insertError;
+              }
+
+              showFeedback('🎉 Registration successful! Your data has been saved and a Telegram notification has been sent.', 'success');
+              form.reset();
+              fileNameDisplay.textContent = 'No file selected';
+              fileNameDisplay.style.color = '#758196';
+
+          } catch (err) {
+              console.error('Submission error:', err);
+              showFeedback('❌ Submission failed: ' + (err.message || 'Please check your connection and try again.'), 'error');
+          } finally {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnText;
+          }
+      });
+
+      function showFeedback(message, type) {
+          formMessage.textContent = message;
+          formMessage.className = 'form-message show ' + type;
+          formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    </script>
 
 </body>
 
