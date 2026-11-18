@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -460,6 +459,7 @@
             <!-- SUBMIT BUTTON -->
             <button
                 type="submit"
+                id="submitBtn"
                 class="submit-button"
             >
 
@@ -477,13 +477,102 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- SUPABASE CLIENT CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    
+    <!-- JAVASCRIPT & SUPABASE INTEGRATION -->
+    <script>
+        const SUPABASE_URL = 'https://uuwfbzrezrthnchsohdq.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_U8AWn6wAPtnVBs9REWtkEQ_Ge43u9U2';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        const form = document.getElementById('registrationForm');
+        const fileInput = document.getElementById('receipt');
+        const fileNameDisplay = document.getElementById('fileName');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
 
-    <!-- JAVASCRIPT -->
-    <script src="script8.js"></script>
+        // Update file name display when file is chosen
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files && fileInput.files.length > 0) {
+                fileNameDisplay.textContent = '✅ Selected: ' + fileInput.files[0].name;
+                fileNameDisplay.style.color = '#16a34a';
+                fileNameDisplay.style.fontWeight = '600';
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+                fileNameDisplay.style.color = '';
+                fileNameDisplay.style.fontWeight = 'normal';
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Submitting... <span>⏳</span>';
+            formMessage.textContent = '';
+            formMessage.className = 'form-message';
+
+            try {
+                let receiptUrl = null;
+
+                // 1. Upload receipt image to Supabase Storage if provided
+                if (fileInput.files && fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}_${Math.random().toString(36.substring(2, 8))}.${fileExt}`;
+
+                    const { error: uploadError } = await supabaseClient.storage
+                        .from('receipts')
+                        .upload(fileName, file);
+
+                    if (!uploadError) {
+                        const { data: publicUrlData } = supabaseClient.storage
+                            .from('receipts')
+                            .getPublicUrl(fileName);
+                        receiptUrl = publicUrlData.publicUrl;
+                    }
+                }
+
+                // 2. Gather form data (mapping fields cleanly to database columns)
+                const formData = {
+                    full_name: document.getElementById('fullName').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email_address: document.getElementById('email').value.trim() || null,
+                    telegram_id: document.getElementById('telegram').value.trim(),
+                    grade_status: document.getElementById('status').value,
+                    course: document.querySelector('input[name="course"]:checked')?.value || null,
+                    receipt_url: receiptUrl,
+                    additional_message: document.getElementById('message').value.trim() || null
+                };
+
+                // 3. Insert into Supabase registrations table
+                const { error: insertError } = await supabaseClient
+                    .from('registrations')
+                    .insert([formData]);
+
+                if (insertError) {
+                    throw insertError;
+                }
+
+                // Success feedback
+                formMessage.textContent = '🎉 Registration successful! Your data has been saved and your Telegram notification is on its way.';
+                formMessage.className = 'form-message show success';
+                form.reset();
+                fileNameDisplay.textContent = 'No file selected';
+                fileNameDisplay.style.color = '';
+
+            } catch (err) {
+                console.error('Submission error:', err);
+                formMessage.textContent = '❌ Submission failed: ' + (err.message || 'Please check your connection and try again.');
+                formMessage.className = 'form-message show error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        });
+    </script>
 
 </body>
 
