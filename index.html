@@ -531,25 +531,24 @@
             const botToken = "9080959311:AAEMOFFFHARcXnS2UnXHL9pPWyTc1OegVxE";
             const chatId = "7550626980";
 
-            // Markdown Message Template
-            const messageText = `🌐 *New Global English Registration!*\n` +
-                                `━━━━━━━━━━━━━━━━━━\n` +
-                                `👤 *Name:* ${fullName}\n` +
-                                `📞 *Phone:* +251${phone}\n` +
-                                `📧 *Email:* ${email}\n` +
-                                `✈️ *Telegram:* ${telegram}\n` +
-                                `🎓 *Status:* ${status}\n` +
-                                `📚 *Course:* ${course}\n` +
-                                `💬 *Message:* ${message}\n` +
-                                `━━━━━━━━━━━━━━━━━━\n` +
-                                `📌 _Payment Receipt Attached Below_`;
+            // Plain Text Message Template (No Markdown parsing issues)
+            const messageText = `🌐 New Global English Registration!\n` +
+                                `----------------------------------\n` +
+                                `👤 Name: ${fullName}\n` +
+                                `📞 Phone: +251${phone}\n` +
+                                `📧 Email: ${email}\n` +
+                                `✈️ Telegram: ${telegram}\n` +
+                                `🎓 Status: ${status}\n` +
+                                `📚 Course: ${course}\n` +
+                                `💬 Message: ${message}\n` +
+                                `----------------------------------\n` +
+                                `📌 Payment Receipt Attached Below`;
 
             try {
                 if (fileInput.files && fileInput.files.length > 0) {
                     const tgFormData = new FormData();
                     tgFormData.append('chat_id', chatId);
                     tgFormData.append('caption', messageText);
-                    tgFormData.append('parse_mode', 'Markdown');
                     tgFormData.append('photo', fileInput.files[0]);
 
                     const response = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
@@ -572,8 +571,7 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             chat_id: chatId,
-                            text: messageText,
-                            parse_mode: 'Markdown'
+                            text: messageText
                         })
                     });
                     
